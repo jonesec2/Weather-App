@@ -1,0 +1,20 @@
+h1 {
+    background-color: rgb(33,150,243);
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: white;
+}
+
+#cityInput {
+    width: 70%;
+    margin-right: 0;
+}
+
+.footer-box {
+    background-color: rgb(26,120,194);
+    color: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
