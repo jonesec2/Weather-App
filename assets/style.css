@@ -1,3 +1,14 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px;
+    /* bottom = footer height */
+    padding-top: 25px;
+}
+
 h1 {
     background-color: rgb(33,150,243);
     text-align: center;
@@ -12,6 +23,7 @@ h1 {
 }
 
 .footer-box {
+    margin-top:10px;
     background-color: rgb(26,120,194);
     color: white;
     width: 100%;
