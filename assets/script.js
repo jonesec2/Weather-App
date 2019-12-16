@@ -2,6 +2,7 @@ $(function () {
     $("#tabs").tabs();
 });
 
+
 // api key: 285389a3277aea781676df3316670296
 var apiKey = "285389a3277aea781676df3316670296"
 
@@ -32,8 +33,8 @@ $('#cityInput').on("click", function () {
         </div>
                 `)
 
-        $('#cityGoesHere').append(newCity)
+        $('#cityGoesHere').prepend(newCity)
+        cityName = $('#inputCity').val('')
     })
+    
 })
-
-
