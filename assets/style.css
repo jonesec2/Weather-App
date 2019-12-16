@@ -6,7 +6,7 @@ h1 {
     color: white;
 }
 
-#cityInput {
+.form-control {
     width: 70%;
     margin-right: 0;
 }
