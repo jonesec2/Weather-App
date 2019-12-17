@@ -18,7 +18,7 @@ h1 {
 }
 
 .gray {
-    background-color: rgb(174, 183, 190);
+    background-color: rgb(211, 227, 240);
     margin-bottom: 4px;
 }
 
@@ -41,6 +41,10 @@ h1 {
     text-align: left;
     width: 100%;
     margin-bottom: 1px;
+}
+
+.ui-tabs-nav {
+    background-color: rgb(211, 227, 240);
 }
 
 .footer-box {
