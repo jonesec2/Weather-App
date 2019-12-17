@@ -75,6 +75,7 @@ $('#cityInput').on("click", function () {
 
         // empties the weather from the previous city
         $('#clear').empty();
+        
         $('.weatherCards').empty();
 
         // weather variables for weather cards
@@ -132,3 +133,6 @@ $('#cityInput').on("click", function () {
     })
 
 })
+
+// if I make a UV forecast tab
+//$('#clearTwo').empty();
