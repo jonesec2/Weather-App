@@ -89,6 +89,7 @@ $('#cityInput').on("click", function () {
 
         var newWeather = $('<div>')
         newWeather.html(/*html*/`
+        
         <div class="box mx-1">
             <div class="row">
                 <h2 class="col-6 mb-0 pr-0  weatherCity"> ${cityResponse} <img src="http://openweathermap.org/img/wn/${weatherImage}@2x.png" height="80px" width="80px"></h2>
@@ -105,9 +106,7 @@ $('#cityInput').on("click", function () {
                 <div class="col-8 weatherHum"> Wind Speed: ${weatherWind}MPH</div>
             </div>
             <div class='row forecastCards'>
-
-                
-    </div>
+            </div>
         </div>
         `)
 
@@ -153,12 +152,12 @@ $('#cityInput').on("click", function () {
                 var tomorrowWind = response.list[3].wind.speed
                 var tomorrowImage = response.list[3].weather[0].icon
 
-                var tomorrowCard = $('<div class="col-3 border rounded ml-1 card">')
+                var tomorrowCard = $('<div class="col-3 mt-2 border rounded ml-1 card">')
 
                 tomorrowCard.html(/*html*/` 
                     
                     <div>
-                        <div>${tomorrowName} <img src="http://openweathermap.org/img/wn/${tomorrowImage}@2x.png" height="30px" width="30px"></div>
+                        <div>${tomorrowName} <img src="http://openweathermap.org/img/wn/${tomorrowImage}@2x.png" height="32px" width="32px"></div>
                         <div>Temp: ${tomorrowTemp}</div>
                         <div>Hum: ${tomorrowHum}%</div>
                         <div>Wind ${tomorrowWind}MPH</div>
