@@ -1,0 +1,101 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px;
+    /*dark background*/
+    /* background-color: rgb(0, 28, 49); */
+    /*light background*/
+    background-color: rgb(241, 249, 255);
+
+}
+
+h1 {
+    background-color: rgb(33,150,243);
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: white;
+}
+
+.gray {
+    background-color: rgb(132, 198, 252);
+}
+
+@media (max-width: 767px) {
+    .gray {margin-bottom: 10px;}
+}
+
+#search {
+    font-size: 24px;
+}
+
+.form-control {
+    width: 70%;
+    margin-right: 0;
+    font-size: 18px;
+}
+
+#cityInput {
+    width: 100%;
+}
+
+.cityFont {
+    font-size: 18px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 1px;
+    text-transform: capitalize;
+}
+
+#tabs-1 {
+    padding-top: 8px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+#tabs-2 {
+    padding-top: 8px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.ui-tabs-nav {
+    background-color: rgb(132, 198, 252);
+    border-left: 10px;
+    margin-bottom: 20px;
+
+}
+
+.box {
+    align-items: center;
+}
+
+.weatherCity {
+    text-transform: capitalize;
+}
+
+.weatherTitle {
+    font-size: 20px;
+}
+
+.weatherFont {
+    text-transform: capitalize;
+}
+
+.wN {
+    font-size: 18px;
+    text-align: left;
+    transform: translateY(30%);
+}
+
+.footer-box {
+    margin-top:10px;
+    background-color: rgb(21, 105, 170);
+    color: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
