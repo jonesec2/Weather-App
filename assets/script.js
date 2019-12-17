@@ -18,19 +18,20 @@ $('#cityInput').on("click", function () {
         url: cityURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response)
+        console.log(response);
 
         // var cityResponse = response.city
         // place holder var to test until Ajax is set up
-        var weatherName = response.weather[0].description
-        console.log(weatherName)
+        var weatherName = response.weather[0].description;
+        console.log(weatherName);
         var cityResponse = $('#inputCity').val().trim();
-        var newCity = $('<div>')
+        var newCity = $('<div>');
+        $('.weatherCards').empty();
 
         newCity.html(/*html*/`
         
         <div class="mb-2">
-            <div class="cityFont"> ${cityResponse}</div>
+            <div class="cityFont py-2 pl-4 border rounded"> ${cityResponse}</div>
         </div>
                 `)
         
@@ -40,9 +41,11 @@ $('#cityInput').on("click", function () {
             <div class="weatherFont"> ${weatherName}</div>
         </div>
         `)
+        
         $('.weatherCards').prepend(weatherName)
         $('#cityGoesHere').prepend(newCity)
         cityName = $('#inputCity').val('')
+        
     })
     
 })

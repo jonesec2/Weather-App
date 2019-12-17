@@ -19,6 +19,12 @@ h1 {
 .form-control {
     width: 70%;
     margin-right: 0;
+    font-size: 20px;
+}
+
+.cityFont {
+    font-size: 20px;
+    text-align: left;
 }
 
 .footer-box {
