@@ -43,7 +43,9 @@ $('#cityInput').on("click", function () {
     var cityName = $('#inputCity').val().trim();
     console.log(cityName)
 
-    // var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=London&APPID=285389a3277aea781676df3316670296"
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Creates first ajax call                                                               /////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=" + apiKey
     console.log(cityURL)
     $.ajax({
@@ -51,6 +53,8 @@ $('#cityInput').on("click", function () {
         method: "GET"
     }).then(function (response) {
         console.log(response);
+
+        
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating the city buttons the user searches for                                      /////////////////////
@@ -70,7 +74,7 @@ $('#cityInput').on("click", function () {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // empties the weather from the previous city
-
+        $('#clear').empty();
         $('.weatherCards').empty();
 
         // weather variables for weather cards
