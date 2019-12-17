@@ -5,6 +5,7 @@ html {
 
 body {
     margin: 0 0 100px;
+    background-color: rgb(227, 236, 243);
 
 }
 
@@ -18,7 +19,7 @@ h1 {
 }
 
 .gray {
-    background-color: rgb(211, 227, 240);
+    background-color: rgb(140, 199, 248);
     margin-bottom: 4px;
 }
 
@@ -44,7 +45,7 @@ h1 {
 }
 
 .ui-tabs-nav {
-    background-color: rgb(211, 227, 240);
+    background-color: rgb(140, 199, 248);
 }
 
 .footer-box {

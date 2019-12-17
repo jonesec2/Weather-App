@@ -82,6 +82,7 @@ $('#cityInput').on("click", function () {
         var weatherImage = response.weather[0].icon
 
 
+
         var newWeather = $('<div>')
         newWeather.html(/*html*/`
         <div class="mx-1">
@@ -89,14 +90,35 @@ $('#cityInput').on("click", function () {
             <div class="date">(${today}) ${weatherName}</div>
             <br>
             <div class="weatherTemp"> Temperature: ${weatherTemp}</div>
-            <div class="weatherHum"> Humidity: ${weatherHum}</div>
+            <div class="weatherHum"> Humidity: ${weatherHum}%</div>
             <div class="weatherHum"> Wind Speed: ${weatherWind} MPH</div>
-            <div class="weatherFont"> Description: ${weatherDescription}</div>
-        </div>
-        <div>
-
+            <div class="uvIndex"></div>
+            <div class="weatherFont">Description: ${weatherDescription}</div>
         </div>
         `)
+
+        //
+        // Second API call
+        //
+        var weatherLat = response.coord.lat
+        var weatherLon = response.coord.lon
+
+        function secondAjax () {
+            var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid="+apiKey+"&lat="+weatherLat+"&lon="+weatherLon+"&cnt=5"
+            console.log(uvURL)
+
+            $.ajax({
+                url: uvURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(response)
+                
+                var uvIndex = response.value
+                $('.uvIndex').append("UV Index: ",uvIndex)
+                console.log(uvIndex)
+            })
+        }
+        secondAjax();
 
         // adds the response to the page
         $('.weatherCards').prepend(newWeather)
