@@ -1,29 +1,42 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Works the tab feature                                                                 /////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 $(function () {
     $("#tabs").tabs();
 });
 
-///////////////////////////////////
-// creates variables for Time
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Creates the time for dates                                                            /////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 var today = new Date();
 var dd = today.getDate();
 
-var mm = today.getMonth()+1; 
+var mm = today.getMonth() + 1;
 var yyyy = today.getFullYear();
-if(dd<10) 
-{
-    dd='0'+dd;
-} 
+if (dd < 10) {
+    dd = '0' + dd;
+}
 
-if(mm<10) 
-{
-    mm='0'+mm;
-} 
+if (mm < 10) {
+    mm = '0' + mm;
+}
 
-today = mm+'/'+dd+'/'+yyyy;
+today = mm + '/' + dd + '/' + yyyy;
 
-///////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Sets up the API                                                                       /////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // api key: 285389a3277aea781676df3316670296
 var apiKey = "285389a3277aea781676df3316670296"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Creates the on click even to create the weather cards                                 /////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $('#cityInput').on("click", function () {
     event.preventDefault();
@@ -39,12 +52,10 @@ $('#cityInput').on("click", function () {
     }).then(function (response) {
         console.log(response);
 
-        // var cityResponse = response.city
-        // place holder var to test until Ajax is set up
-
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating the city buttons the user searches for                                      /////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         var cityResponse = $('#inputCity').val().trim();
 
         var newCity = $('<div>');
@@ -57,8 +68,9 @@ $('#cityInput').on("click", function () {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating the weather format and cards                                                  ////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+
         // empties the weather from the previous city
+
         $('.weatherCards').empty();
 
         // weather variables for weather cards
@@ -67,24 +79,26 @@ $('#cityInput').on("click", function () {
         var weatherTemp = response.main.temp
         var weatherHum = response.main.humidity
         var weatherWind = response.wind.speed
+        var weatherImage = response.weather[0].icon
 
 
         var newWeather = $('<div>')
         newWeather.html(/*html*/`
         <div class="mx-1">
-            <h2 class="weatherCity"> ${cityResponse} </h2> 
+            <h2 class="weatherCity"> ${cityResponse} ${weatherImage}</h2> 
             <div class="date">(${today}) ${weatherName}</div>
             <br>
             <div class="weatherTemp"> Temperature: ${weatherTemp}</div>
             <div class="weatherHum"> Humidity: ${weatherHum}</div>
             <div class="weatherHum"> Wind Speed: ${weatherWind} MPH</div>
-            <div class="weatherFont"> ${weatherDescription}</div>
+            <div class="weatherFont"> Description: ${weatherDescription}</div>
         </div>
         <div>
 
         </div>
         `)
 
+        // adds the response to the page
         $('.weatherCards').prepend(newWeather)
         $('#cityGoesHere').prepend(newCity)
         cityName = $('#inputCity').val('')
