@@ -14,22 +14,38 @@ h1 {
     padding-top: 25px;
     padding-bottom: 25px;
     color: white;
+    /* margin-bottom: 5px; */
+}
+
+.gray {
+    background-color: rgb(174, 183, 190);
+    margin-bottom: 4px;
+}
+
+#search {
+    font-size: 24px;
 }
 
 .form-control {
     width: 70%;
     margin-right: 0;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+#cityInput {
+    width: 100%;
 }
 
 .cityFont {
-    font-size: 20px;
+    font-size: 18px;
     text-align: left;
+    width: 100%;
+    margin-bottom: 1px;
 }
 
 .footer-box {
     margin-top:10px;
-    background-color: rgb(26,120,194);
+    background-color: rgb(21, 105, 170);
     color: white;
     width: 100%;
     position: absolute;

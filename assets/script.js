@@ -30,8 +30,8 @@ $('#cityInput').on("click", function () {
 
         newCity.html(/*html*/`
         
-        <div class="mb-2">
-            <div class="cityFont py-2 pl-4 border rounded"> ${cityResponse}</div>
+        <div>
+            <button class="cityFont py-2 pl-4 border rounded"> ${cityResponse}</button>
         </div>
                 `)
         

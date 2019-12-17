@@ -21,14 +21,14 @@
 </head>
 
 <body>
-    <div class="page-header">
+    <div class="page-header mb-3">
         <h1>Blue Skies Weather Forecast</h1>
     </div>
-    <div class="row mx-1">
-        <div class="col-11 col-md-4">
+    <div class="row mx-2">
+        <div class="col-11 col-md-4 pb-2 mr-2 rounded gray">
             <form>
                 <div class="form mt-2">
-                    <label for="exampleCity">Search for a city</label>
+                    <label id="search" for="exampleCity">Search for a city</label>
                 </div>
                 <div class="input-group mb-3">
                     <input id="inputCity" type="text" class="form-control" placeholder="City Name">
@@ -40,7 +40,7 @@
             </form>
             <div id="cityGoesHere"></div>
         </div>
-        <div class="col-12 col-md-7">
+        <div class="col-12 col-md-7 pl-0">
             <div id="tabs">
                 <ul>
                     <li><a href="#tabs-1">Tab One</a></li>
