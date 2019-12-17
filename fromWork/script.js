@@ -104,10 +104,10 @@ $('#cityInput').on("click", function () {
                 <div class="col-4 uvIndex"></div>
                 <div class="col-8 weatherHum"> Wind Speed: ${weatherWind}MPH</div>
             </div>
-            <div class='row weatherCards'>
-                <div class="cardOne">test</div>
+            <div class='row forecastCards'>
+
                 
-            </div
+    </div>
         </div>
         `)
 
@@ -153,20 +153,19 @@ $('#cityInput').on("click", function () {
                 var tomorrowWind = response.list[3].wind.speed
                 var tomorrowImage = response.list[3].weather[0].icon
 
-                var tomorrowCard = $('<div class="card">')
+                var tomorrowCard = $('<div class="col-3 border rounded ml-1 card">')
 
-                tomorrowCard.html(/*html*/
-                    `
-                    <div class="col-3 border rounded ml-1>
-                        <div>${tomorrowName}</div>
-                        <img src="http://openweathermap.org/img/wn/tomorrowImage@2x.png" height="30px" width="30px">
-                        <div>${tomorrowTemp}</div>
-                        <div>${tomorrowHum}</div>
-                        <div>${tomorrowWind}</div>
-                    </div
+                tomorrowCard.html(/*html*/` 
+                    
+                    <div>
+                        <div>${tomorrowName} <img src="http://openweathermap.org/img/wn/${tomorrowImage}@2x.png" height="30px" width="30px"></div>
+                        <div>Temp: ${tomorrowTemp}</div>
+                        <div>Hum: ${tomorrowHum}%</div>
+                        <div>Wind ${tomorrowWind}MPH</div>
+                    </div> 
                     `)
 
-                $('.weatherCards').append(tomorrowCard)
+                $('.forecastCards').append(tomorrowCard)
             })
         }
         thirdAjax();
