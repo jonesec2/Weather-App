@@ -1,14 +1,14 @@
-////////////////////////////////////////////////////////////////////////////////////////
-// Works the tab feature                                           /////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////
+// Works the tab feature    
+/////////////////////////
 
 $(function () {
     $("#tabs").tabs();
 });
 
-////////////////////////////////////////////////////////////////////////////////////////
-// Creates the time for dates                                      /////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////
+// Creates the time for dates    
+/////////////////////////
 
 var today = new Date();
 var dd = today.getDate();
@@ -25,26 +25,24 @@ if (mm < 10) {
 
 today = mm + '/' + dd + '/' + yyyy;
 
-
-////////////////////////////////////////////////////////////////////////////////////////
-// Sets up the API                                                 /////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////
+// Sets up the API Key   
+/////////////////////////
 
 var apiKey = "285389a3277aea781676df3316670296"
 
-
-////////////////////////////////////////////////////////////////////////////////////////
-// Creates the on click even to create the weather cards           /////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////
+// Creates the on click even to create the weather cards           
+/////////////////////////
 
 $('#cityInput').on("click", function () {
     event.preventDefault();
     var cityName = $('#inputCity').val().trim();
     console.log(cityName)
 
-    ////////////////////////////////////////////////////////////////////////////////////////
-    // Creates first ajax call                                         /////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////
+    // Creates first ajax call 
+    /////////////////////////
     var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&APPID=" + apiKey
     console.log(cityURL)
     $.ajax({
@@ -53,12 +51,13 @@ $('#cityInput').on("click", function () {
     }).then(function (response) {
         console.log(response);
 
-        ////////////////////////////////////////////////////////////////////////////////////////
-        // Creating the city buttons the user searches for                 /////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////
+        // Creating the city buttons the user searches for                 
+        /////////////////////////
 
         var cityResponse = $('#inputCity').val().trim();
 
+        // creating the new divs the city info will live in
         var newCity = $('<div>');
         newCity.html(/*html*/`
         <div class="newCity">
@@ -66,13 +65,12 @@ $('#cityInput').on("click", function () {
         </div>
         `)
 
-        ////////////////////////////////////////////////////////////////////////////////////////
-        // Creating the weather format and cards                            ////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////
+        // Creating the weather format and cards
+        /////////////////////////
 
         // empties the weather from the previous city
         $('#clear').empty();
-
         $('.weatherCards').empty();
 
         // weather variables for weather cards
@@ -83,11 +81,12 @@ $('#cityInput').on("click", function () {
         var weatherWind = response.wind.speed
         var weatherImage = response.weather[0].icon
         var weatherCityID = response.id
-        console.log(weatherCityID)
         //<div class="weatherFont">Description: ${weatherDescription}</div>
 
 
+        // creating div for the weather tab card info to live in
         var newWeather = $('<div>')
+        //using template literals to get the weather variables to the UI
         newWeather.html(/*html*/`
         
         <div class="box mx-1">
@@ -110,12 +109,17 @@ $('#cityInput').on("click", function () {
         </div>
         `)
 
-        //
+        /////////////////////////
         // Second API call
-        //
+        // This gets the UV index using city ID #
+        ////////////////////////
+
+        // sets the latitude and longitude variables 
         var weatherLat = response.coord.lat
         var weatherLon = response.coord.lon
 
+
+        // create new function inside the other function for a new ajax request using data from first ajax request
         function secondAjax() {
             var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + weatherLat + "&lon=" + weatherLon + "&cnt=5"
             console.log(uvURL)
@@ -124,37 +128,49 @@ $('#cityInput').on("click", function () {
                 url: uvURL,
                 method: "GET"
             }).then(function (response) {
-                console.log(response)
 
+
+                // getting the UV index value
                 var uvIndex = response.value
+                // adding UV index info to the already created div "uvIndex" created in first ajax function
                 $('.uvIndex').append("UV Index: ", uvIndex)
-                console.log(uvIndex)
             })
         }
+        // calls the second function or it won't execute
         secondAjax();
 
-        //
-        // Thrid API call
-        //
+        /////////////////
+        // Third API call
+        /////////////////
 
+
+        // third ajax request to get the 5 day forecast
         function thirdAjax() {
             var forecastURL = "http://api.openweathermap.org/data/2.5/forecast?id=" + weatherCityID + "&units=imperial&APPID=" + apiKey
-            console.log(forecastURL)
+
 
             $.ajax({
                 url: forecastURL,
                 method: "GET"
             }).then(function (response) {
-                console.log(response)
-                var tomorrowName = response.list[3].weather[0].main;
-                var tomorrowTemp = response.list[3].main.temp
-                var tomorrowHum = response.list[3].main.humidity
-                var tomorrowWind = response.list[3].wind.speed
-                var tomorrowImage = response.list[3].weather[0].icon
 
-                var tomorrowCard = $('<div class="col-3 mt-2 border rounded ml-1 card">')
+                var days = [3, 11, 19, 27]
+                for (var i = 0; i < days.length; i++) {
+                    // creating the variables to get all of the data I want for the five day forecast
+                    var tomorrowName = response.list[days].weather[0].main;
+                    var tomorrowTemp = response.list[days].main.temp
+                    var tomorrowHum = response.list[days].main.humidity
+                    var tomorrowWind = response.list[days].wind.speed
+                    var tomorrowImage = response.list[days].weather[0].icon
+                    console.log(response)
+                    console.log(response.list[days])
+                    
 
-                tomorrowCard.html(/*html*/` 
+                    // creating a div to hold all of the five day forecast
+                    var tomorrowCard = $('<div class="col-3 mt-2 border rounded ml-1 card">')
+
+                    // setting the html of the newly created div
+                    tomorrowCard.html(/*html*/` 
                     
                     <div>
                         <div>${tomorrowName} <img src="http://openweathermap.org/img/wn/${tomorrowImage}@2x.png" height="32px" width="32px"></div>
@@ -164,7 +180,9 @@ $('#cityInput').on("click", function () {
                     </div> 
                     `)
 
-                $('.forecastCards').append(tomorrowCard)
+                    // appending the new card to the already created div "forecastCards"
+                    $('.forecastCards').append(tomorrowCard)
+                }
             })
         }
         thirdAjax();
