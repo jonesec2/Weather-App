@@ -29,7 +29,7 @@
         <h1>Blue Skies Weather Forecast</h1>
     </div>
     <div class="row mx-2">
-        <div class="col-11 col-md-3 pb-2 mr-2  rounded gray">
+        <div class="col-11 col-md-3 pb-2  rounded gray">
             <form>
                 <div class="form mt-2">
                     <label id="search" for="exampleCity">Search for a city</label>
@@ -44,34 +44,34 @@
             </form>
             <div id="cityGoesHere"></div>
         </div>
-        <div class="col-12 col-md-8 pl-0">
+        <div class="col-12 col-md-9 px-0">
             <div id="tabs">
                 <ul>
                     <li><a href="#tabs-1">Five Day Forecast</a></li>
                     <li><a href="#tabs-2">Five Day UV Forecast</a></li>
-                    <li><a href="#tabs-3">Tab Three</a></li>
                 </ul>
                 <div id="tabs-1">
                     <h3 id="clear">Search for a city to see the forecast</h3>
-                    <div class="weatherCards"></div>
+                    <div class="weatherCards">
+                    </div>
+                    <div class='row'>
+                        <div class="forecast col-12"></div>
+                    </div>
+                    <div class='row cardContainer'></div>
                 </div>
                 <div id="tabs-2">
                     <h3 id="clearTwo">Search for a city to see the UV forecast</h3>
                     <div class="weatherCardsTwo"></div>
                 </div>
-                <div class="mb-2" id="tabs-3">
-                    <p>Test</p>
-                    <p>Test</p>
-                    <div class="weatherCardsThree"></div>
-                </div>
             </div>
         </div>
     </div>
 
+
     <footer class="footer-box">
         <div class="container text-center py-3">© Copyright 2019 Blue Skies Weather</div>
     </footer>
-    <script src="fromWork/script.js"></script>
+    <script src="fromWork/scriptTEST.js"></script>
 </body>
 
 </html>

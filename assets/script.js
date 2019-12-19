@@ -131,7 +131,6 @@ $('#cityInput').on("click", function () {
         cityName = $('#inputCity').val('')
 
     })
-
 })
 
 // if I make a UV forecast tab
