@@ -24,8 +24,6 @@ if (mm < 10) {
 }
 today = mm + '/' + dd + '/' + yyyy;
 
-buttonsExist = false
-
 /////////////////////////
 // Sets up the API Key   
 /////////////////////////
@@ -36,27 +34,43 @@ var apiKey = "285389a3277aea781676df3316670296"
 // Creates the on click even to create the weather cards           
 /////////////////////////
 
+var localName = []
+console.log(localName)
+
+
+
+for (var i = 0; i <localName.length; i++){
+    var newCity = $('<div>');
+    newCity.html(`
+            <div class="newCity">
+                <button id='${localName[i]}' class="cityFont py-2 pl-4 border rounded">${localName[i]}</button>
+            </div>
+            `)
+    $('#cityGoesHere').prepend(newCity)
+}
+
+localStorage.getItem('cityNames')
 
 $('#cityInput').on("click", function () {
     event.preventDefault();
 
     //set up var for the users input
     var cityName = $('#inputCity').val().trim();
+    console.log(cityName)
 
     /////////////////////////
     // Store search locally
     /////////////////////////
 
 
-    for (var i =0; i< local.length;i++){
-    var name = []
-    console.log(name)
-    name.push(cityName)
-    console.log(name)
-    localStorage.setItem(cityName, cityName)
-    var cityButton = localStorage.getItem(cityName)
-    console.log(cityButton)
-    }
+    // for (var i =0; i< local.length;i++){
+    
+    console.log(localName)
+    localName.push(cityName)
+    localStorage.setItem('cityNames', localName)
+    // var cityButton = localStorage.getItem(cityName)
+    // console.log(cityButton)
+    // }
 
 
     /////////////////////////
