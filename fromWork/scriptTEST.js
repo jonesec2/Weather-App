@@ -24,6 +24,7 @@ if (mm < 10) {
 }
 today = mm + '/' + dd + '/' + yyyy;
 
+buttonsExist = false
 
 /////////////////////////
 // Sets up the API Key   
@@ -47,7 +48,7 @@ $('#cityInput').on("click", function () {
     /////////////////////////
 
 
-    // for (var i =0; i< local.length;i++){
+    for (var i =0; i< local.length;i++){
     var name = []
     console.log(name)
     name.push(cityName)
@@ -55,7 +56,7 @@ $('#cityInput').on("click", function () {
     localStorage.setItem(cityName, cityName)
     var cityButton = localStorage.getItem(cityName)
     console.log(cityButton)
-    // }
+    }
 
 
     /////////////////////////
@@ -70,11 +71,11 @@ $('#cityInput').on("click", function () {
             </div>
             `)
     $('#cityGoesHere').prepend(newCity)
-    console.log($('.cityFont').text())
+    // console.log($('.cityFont').text())
     // console.log($('.cityFont').data())
     var dataObj = $('.cityFont').data()
     var dataName = dataObj.name
-    console.log(cityName)
+    // console.log(cityName)
     /////////////////////////
     // Creates first ajax call 
     /////////////////////////
@@ -86,7 +87,7 @@ $('#cityInput').on("click", function () {
             method: "GET"
         }).then(function (response) {
             event.preventDefault();
-            console.log(response)
+            // console.log(response)
 
             /////////////////////////
             // Creating the weather format and cards
@@ -99,13 +100,11 @@ $('#cityInput').on("click", function () {
             $('.cardContainer').empty();
 
             // weather variables for weather cards
-            var cityResponse = localStorage.getItem(cityName);
             var weatherName = response.weather[0].main;
             var weatherTemp = response.main.temp
             var weatherHum = response.main.humidity
             var weatherWind = response.wind.speed
             var weatherImage = response.weather[0].icon
-            var weatherCityID = response.id
 
             // creating div for the weather tab card info to live in
             var newWeather = $('<div>')
@@ -146,9 +145,9 @@ $('#cityInput').on("click", function () {
             secondAjax(apiKey, response.coord.lat, response.coord.lon);
             //define arguments
             thirdAjax(response.id, apiKey);
-            //
-            $('.cityFont').on("click", buttonSearch)
-
+            // 
+            $(`#${cityName}`).on("click", buttonSearch)
+            
             // adds the response to the page
             $('.weatherCards').prepend(newWeather)
             cityName = $('#inputCity').val('')
@@ -156,8 +155,6 @@ $('#cityInput').on("click", function () {
         })
     } firstAjax();
 })
-
-
 
 
 function buttonSearch() {
@@ -169,20 +166,16 @@ function buttonSearch() {
     $('.cardContainer').empty();
 
     var dataObj = this.id
-    // var dataName = dataObj.name
-    // var dataStringify = JSON.stringify(dataName)
-    console.log(dataObj)
 
     var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + dataObj + "&units=imperial&APPID=" + apiKey
-    console.log(dataObj)
+    console.log("dataObj",dataObj)
 
-    function firstAjax() {
+    function buttonAjax() {
         $.ajax({
             url: cityURL,
             method: "GET"
         }).then(function (response) {
             event.preventDefault();
-
 
             /////////////////////////
             // Creating the weather format and cards
@@ -201,7 +194,6 @@ function buttonSearch() {
             var weatherHum = response.main.humidity
             var weatherWind = response.wind.speed
             var weatherImage = response.weather[0].icon
-            var weatherCityID = response.id
 
             // creating div for the weather tab card info to live in
             var newWeather = $('<div>')
@@ -247,7 +239,7 @@ function buttonSearch() {
             cityName = $('#inputCity').val('')
 
         })
-    } firstAjax();
+    } buttonAjax();
 }
 
 /////////////////////////
