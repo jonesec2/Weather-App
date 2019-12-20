@@ -39,12 +39,12 @@ if (localName === null) {
 }
 else {
     localName = JSON.parse(localName)
-    console.log(localName)
+    
 }
 
 
 for (var i = 0; i < localName.length; i++) {
-    console.log(localName)
+    
     var newCity = $('<div>');
     newCity.html(`
         <div class="newCity">
@@ -61,13 +61,13 @@ $('#cityInput').on("click", function () {
 
     //set up var for the users input
     var cityName = $('#inputCity').val().trim();
-    console.log(cityName)
+   
 
     /////////////////////////
     // Store search locally
     /////////////////////////
 
-    console.log(localName)
+    
     localName.push(cityName)
     let newLocalName = JSON.stringify(localName)
     localStorage.setItem('cityNames', newLocalName)
@@ -85,11 +85,9 @@ $('#cityInput').on("click", function () {
             </div>
             `)
     $('#cityGoesHere').prepend(newCity)
-    // console.log($('.cityFont').text())
-    // console.log($('.cityFont').data())
+
     var dataObj = $('.cityFont').data()
-    var dataName = dataObj.name
-    // console.log(cityName)
+  
     /////////////////////////
     // Creates first ajax call 
     /////////////////////////
@@ -101,7 +99,6 @@ $('#cityInput').on("click", function () {
             method: "GET"
         }).then(function (response) {
             event.preventDefault();
-            // console.log(response)
 
             /////////////////////////
             // Creating the weather format and cards
@@ -179,10 +176,10 @@ $('.cityFont').on("click", function  () {
     $('.cardContainer').empty();
 
     var dataObj = this.id
-    console.log(dataObj)
+
 
     var cityURL = "https://api.openweathermap.org/data/2.5/weather?q=" + dataObj + "&units=imperial&APPID=" + apiKey
-    console.log("dataObj", dataObj)
+
 
     function buttonAjax() {
         $.ajax({
