@@ -34,27 +34,29 @@ var apiKey = "285389a3277aea781676df3316670296"
 // Creates the on click even to create the weather cards           
 /////////////////////////
 
-var localName = []
-console.log(localName)
+var localName = localStorage.getItem('cityNames')
 
-localStorage.getItem('cityNames')
 
-if (localName = []) {
-    localName = localStorage.getItem('cityNames')
-    if (localName = []) {
-        return;
-    }
-    else {
-        for (var i = 0; i < localName.length; i++) {
-            var newCity = $('<div>');
-            newCity.html(`
-            <div class="newCity">
-                <button id='${localName}' class="cityFont py-2 pl-4 border rounded">${localName}</button>
-            </div>
-            `)
-            $('#cityGoesHere').prepend(newCity)
-        }
-    }
+if (localName === null) {
+    
+    localName = []
+ 
+}
+else {
+    localName = JSON.parse(localName)
+    console.log(localName)
+}
+
+
+for (var i = 0; i < localName.length; i++) {
+    console.log(localName)
+    var newCity = $('<div>');
+    newCity.html(`
+        <div class="newCity">
+            <button id='${localName[i]}' class="cityFont py-2 pl-4 border rounded">${localName[i]}</button>
+        </div>
+        `)
+    $('#cityGoesHere').prepend(newCity)
 }
 
 
@@ -75,7 +77,8 @@ $('#cityInput').on("click", function () {
 
     console.log(localName)
     localName.push(cityName)
-    localStorage.setItem('cityNames', localName)
+    let newlocalName= JSON.stringify(localName)
+    localStorage.setItem('cityNames', newlocalName)
     // var cityButton = localStorage.getItem(cityName)
     // console.log(cityButton)
     // }
