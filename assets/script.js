@@ -93,7 +93,7 @@ $('#cityInput').on("click", function () {
     /////////////////////////
     // Creates first ajax call 
     /////////////////////////
-    var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&APPID=" + apiKey
+    var cityURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&APPID=" + apiKey
 
     function firstAjax() {
         $.ajax({
