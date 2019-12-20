@@ -36,7 +36,6 @@ var apiKey = "285389a3277aea781676df3316670296"
 
 var localName = localStorage.getItem('cityNames')
 
-
 if (localName === null) {
 
     localName = []
@@ -60,6 +59,7 @@ for (var i = 0; i < localName.length; i++) {
 
 
 
+
 $('#cityInput').on("click", function () {
     event.preventDefault();
 
@@ -71,16 +71,10 @@ $('#cityInput').on("click", function () {
     // Store search locally
     /////////////////////////
 
-
-    // for (var i =0; i< local.length;i++){
-
     console.log(localName)
     localName.push(cityName)
-    let newlocalName= JSON.stringify(localName)
-    localStorage.setItem('cityNames', newlocalName)
-    // var cityButton = localStorage.getItem(cityName)
-    // console.log(cityButton)
-    // }
+    let newLocalName= JSON.stringify(localName)
+    localStorage.setItem('cityNames', newLocalName)
 
 
     /////////////////////////
@@ -182,7 +176,7 @@ $('#cityInput').on("click", function () {
 
 
 function buttonSearch() {
-    event.preventDefault();
+   
     $('.uvIndex').empty();
     $('#clear').empty();
     $('.weatherCards').empty();
@@ -190,6 +184,7 @@ function buttonSearch() {
     $('.cardContainer').empty();
 
     var dataObj = this.id
+    console.log(dataObj)
 
     var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + dataObj + "&units=imperial&APPID=" + apiKey
     console.log("dataObj", dataObj)
