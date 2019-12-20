@@ -37,19 +37,27 @@ var apiKey = "285389a3277aea781676df3316670296"
 var localName = []
 console.log(localName)
 
+localStorage.getItem('cityNames')
 
-
-for (var i = 0; i <localName.length; i++){
-    var newCity = $('<div>');
-    newCity.html(`
+if (localName = []) {
+    localName = localStorage.getItem('cityNames')
+    if (localName = []) {
+        return;
+    }
+    else {
+        for (var i = 0; i < localName.length; i++) {
+            var newCity = $('<div>');
+            newCity.html(`
             <div class="newCity">
-                <button id='${localName[i]}' class="cityFont py-2 pl-4 border rounded">${localName[i]}</button>
+                <button id='${localName}' class="cityFont py-2 pl-4 border rounded">${localName}</button>
             </div>
             `)
-    $('#cityGoesHere').prepend(newCity)
+            $('#cityGoesHere').prepend(newCity)
+        }
+    }
 }
 
-localStorage.getItem('cityNames')
+
 
 $('#cityInput').on("click", function () {
     event.preventDefault();
@@ -64,7 +72,7 @@ $('#cityInput').on("click", function () {
 
 
     // for (var i =0; i< local.length;i++){
-    
+
     console.log(localName)
     localName.push(cityName)
     localStorage.setItem('cityNames', localName)
@@ -161,7 +169,7 @@ $('#cityInput').on("click", function () {
             thirdAjax(response.id, apiKey);
             // 
             $(`#${cityName}`).on("click", buttonSearch)
-            
+
             // adds the response to the page
             $('.weatherCards').prepend(newWeather)
             cityName = $('#inputCity').val('')
@@ -182,7 +190,7 @@ function buttonSearch() {
     var dataObj = this.id
 
     var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + dataObj + "&units=imperial&APPID=" + apiKey
-    console.log("dataObj",dataObj)
+    console.log("dataObj", dataObj)
 
     function buttonAjax() {
         $.ajax({
