@@ -2,9 +2,6 @@
 // Works the tab feature    
 /////////////////////////
 
-$(function () {
-    $("#tabs").tabs();
-});
 
 /////////////////////////
 // Creates the time for dates    
