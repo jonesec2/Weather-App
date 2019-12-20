@@ -127,7 +127,7 @@ $('#cityInput').on("click", function () {
                 
                 <div class="box">
                     <div class="row">
-                        <h2 class="col-4 mb-0 pr-0  weatherCity"> ${cityName} <img src="http://openweathermap.org/img/wn/${weatherImage}@2x.png" height="80px" width="80px"></h2>
+                        <h2 class="col-4 mb-0 pr-0  weatherCity"> ${cityName} <img src="https://openweathermap.org/img/wn/${weatherImage}@2x.png" height="80px" width="80px"></h2>
                         <div class="col-4 pl-0 box wN">Today's Date: ${today}</div>
                     </div>
                     <div> ${weatherName}</div>
@@ -181,7 +181,7 @@ $('.cityFont').on("click", function  () {
     var dataObj = this.id
     console.log(dataObj)
 
-    var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + dataObj + "&units=imperial&APPID=" + apiKey
+    var cityURL = "https://api.openweathermap.org/data/2.5/weather?q=" + dataObj + "&units=imperial&APPID=" + apiKey
     console.log("dataObj", dataObj)
 
     function buttonAjax() {
@@ -216,7 +216,7 @@ $('.cityFont').on("click", function  () {
             
                         <div class="box">
                             <div class="row">
-                                <h2 class="col-4 mb-0 pr-0  weatherCity"> ${dataObj} <img src="http://openweathermap.org/img/wn/${weatherImage}@2x.png" height="80px" width="80px"></h2>
+                                <h2 class="col-4 mb-0 pr-0  weatherCity"> ${dataObj} <img src="https://openweathermap.org/img/wn/${weatherImage}@2x.png" height="80px" width="80px"></h2>
                                 <div class="col-4 pl-0 box wN">Today's Date: ${today}</div>
                             </div>
                             <div> ${weatherName}</div>
@@ -265,7 +265,7 @@ $('.cityFont').on("click", function  () {
 // give parameters
 function secondAjax(apiKey, weatherLat, weatherLon) {
 
-    var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + weatherLat + "&lon=" + weatherLon + "&cnt=5"
+    var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + weatherLat + "&lon=" + weatherLon + "&cnt=5"
 
     $.ajax({
         url: uvURL,
@@ -287,7 +287,7 @@ function secondAjax(apiKey, weatherLat, weatherLon) {
 // third ajax request to get the 5 day forecast
 //give parameters
 function thirdAjax(weatherCityID, apiKey) {
-    var forecastURL = "http://api.openweathermap.org/data/2.5/forecast?id=" + weatherCityID + "&units=imperial&APPID=" + apiKey
+    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + weatherCityID + "&units=imperial&APPID=" + apiKey
 
     $.ajax({
         url: forecastURL,
@@ -316,7 +316,7 @@ function thirdAjax(weatherCityID, apiKey) {
                     <div class='dayTitle'>${titles[i]}</div>
                     <hr class=' my-0 cardHr'>
                     <div>
-                        <div>${tomorrowName} <img src="http://openweathermap.org/img/wn/${tomorrowImage}@2x.png" height="32px" width="32px"></div>
+                        <div>${tomorrowName} <img src="https://openweathermap.org/img/wn/${tomorrowImage}@2x.png" height="32px" width="32px"></div>
                         <div>${tomorrowSubstring}</div>
                         <div>Temp: ${tomorrowTemp}&deg</div>
                         <div>Hum: ${tomorrowHum}%</div>
