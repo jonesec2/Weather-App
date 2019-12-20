@@ -59,7 +59,6 @@ for (var i = 0; i < localName.length; i++) {
 
 
 
-
 $('#cityInput').on("click", function () {
     event.preventDefault();
 
@@ -73,7 +72,7 @@ $('#cityInput').on("click", function () {
 
     console.log(localName)
     localName.push(cityName)
-    let newLocalName= JSON.stringify(localName)
+    let newLocalName = JSON.stringify(localName)
     localStorage.setItem('cityNames', newLocalName)
 
 
@@ -163,8 +162,6 @@ $('#cityInput').on("click", function () {
             secondAjax(apiKey, response.coord.lat, response.coord.lon);
             //define arguments
             thirdAjax(response.id, apiKey);
-            // 
-            $(`#${cityName}`).on("click", buttonSearch)
 
             // adds the response to the page
             $('.weatherCards').prepend(newWeather)
@@ -175,8 +172,9 @@ $('#cityInput').on("click", function () {
 })
 
 
-function buttonSearch() {
-   
+
+$('.cityFont').on("click", function  () {
+
     $('.uvIndex').empty();
     $('#clear').empty();
     $('.weatherCards').empty();
@@ -259,7 +257,7 @@ function buttonSearch() {
 
         })
     } buttonAjax();
-}
+})
 
 /////////////////////////
 // Second API call
